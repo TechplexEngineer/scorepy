@@ -40,6 +40,10 @@ class Presentation(db.Model):
         return total/3.0
 
     @property
+    def breakdown_string(self):
+        return "%0.1f | %0.1f | %0.1f" % (self.research_score, self.innovative_solution_score, self.presentation_score)
+
+    @property
     def overall_score(self):
         total = self.research_score \
             + self.innovative_solution_score \
@@ -84,6 +88,10 @@ class CoreValues(db.Model):
         return total/3.0
 
     @property
+    def breakdown_string(self):
+        return "%0.1f | %0.1f | %0.1f" % (self.teamwork_score, self.gp_score, self.inspiration_score)
+
+    @property
     def overall_score(self):
         total = self.teamwork_score + self.gp_score + self.inspiration_score
         return total/3.0
@@ -126,6 +134,10 @@ class Technical(db.Model):
     def strategy_innovation_score(self):
         total = self.design_process + self.mission_strategy + self.innovation
         return total/3.0
+
+    @property
+    def breakdown_string(self):
+        return "%0.1f | %0.1f | %0.1f" % (self.mechanical_score, self.programming_score, self.strategy_innovation_score)
 
     @property
     def overall_score(self):
